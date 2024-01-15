@@ -36,8 +36,4 @@ public class JwtTokenProvider {
         return token;
     }
 
-    private String verificarExistenciaToken(HttpServletRequest request) {
-
-        return null;
-    }
 }

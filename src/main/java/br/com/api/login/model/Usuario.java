@@ -30,11 +30,11 @@ public class Usuario {
     private String nome;
 
     @CPF
-    @Column(name = "CPF")
+    @Column(name = "CPF", unique = true)
     private String cpf;
 
     @Email
-    @Column(name="EMAIL")
+    @Column(name="EMAIL", unique = true)
     private String email;
 
     @Column(name = "TELEFONE")

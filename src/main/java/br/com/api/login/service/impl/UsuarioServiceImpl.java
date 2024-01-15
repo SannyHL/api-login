@@ -28,13 +28,13 @@ public class UsuarioServiceImpl implements UsuarioService{
     private final UsuarioMapper usuarioMapper;
 
     @Override
-    public Usuario buscarUsuarioPorEmail(String email) throws UsernameNotFoundException {
-        return usuarioRepository.findByEmail(email);
+    public Usuario buscarUsuarioPorEmail(String email) {
+        return usuarioRepository.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException("Nenhum usuário localizado."));
     }
 
     @Override
     public UsuarioDTO buscarUsuarioPorId(Integer id) {
-        return usuarioRepository.buscarUsuarioPorId(id);
+        return usuarioRepository.buscarUsuarioPorId(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Nenhum usuário localizado."));
     }
 
     @Override

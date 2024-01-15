@@ -31,10 +31,9 @@ public class AutenticacaoServiceImpl implements AutenticacaoService {
     @Override
     public JwtAuthenticationResponse autenticacaoUsuario(UsuarioLoginDTO usuarioLogin, HttpServletRequest request) {
         try {
-            List<GrantedAuthority> authorities = new ArrayList<>();
 
             Usuario usuario = usuarioService.buscarUsuarioPorEmail(usuarioLogin.getEmail());
-
+            List<GrantedAuthority> authorities = new ArrayList<>(usuario.getRoles());
             Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(usuarioLogin.getEmail(), usuarioLogin.getSenha(), authorities));
             usuario.setUltimoAcesso(new Date());
             usuarioService.salvarUsuario(usuario);

@@ -8,10 +8,11 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 
-    Usuario findByEmail(String email);
+    Optional<Usuario> findByEmail(String email);
 
     Boolean existsByEmail(String email);
     Boolean existsByCpf(String cpf);
@@ -30,7 +31,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
             "usuario.roles) " +
             "FROM Usuario usuario " +
             "WHERE usuario.id = :id")
-    UsuarioDTO buscarUsuarioPorId(@Param("id") Integer id);
+    Optional<UsuarioDTO> buscarUsuarioPorId(@Param("id") Integer id);
 
     @Query("SELECT new br.com.api.login.model.dto.UsuarioDTO(usuario.id, " +
             "usuario.nome, " +
