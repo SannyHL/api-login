@@ -13,6 +13,7 @@
 - [X] Edição de Usuário
 - [x] Craiação de Token JWT
 - [x] Autenticação por Token JWT
+- [x] Documentada com Swagger
 
 <br><h2>🛠 Algumas das tecnologias utilizadas na construção do projeto:</h2>
 
